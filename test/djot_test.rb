@@ -9,7 +9,7 @@ class DjotTest < Test::Unit::TestCase
     end
   end
 
-  test "something useful" do
-    assert_equal("expected", "actual")
+  test "quick start" do
+    assert_equal("<p>This is <strong>djot</strong></p>\n", Djot.render_html("This is *djot*"))
   end
 end

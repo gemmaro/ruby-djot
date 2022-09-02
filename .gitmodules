@@ -1,0 +1,3 @@
+[submodule "vendor/djot"]
+	path = vendor/djot
+	url = https://github.com/jgm/djot

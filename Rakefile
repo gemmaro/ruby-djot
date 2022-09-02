@@ -13,4 +13,20 @@ require "rubocop/rake_task"
 
 RuboCop::RakeTask.new
 
-task default: %i[test rubocop]
+task default: %i[copy test rubocop]
+
+desc "Copy Lua files"
+task copy: "lib/lua/djot" do
+  license = File.read("vendor/djot/LICENSE")
+  (["vendor/djot/djot.lua"] + Dir["vendor/djot/djot/*.lua"]).each do |file|
+    File.write(file.sub(%r{vendor/djot}, "lib/lua"), <<~END_LUA)
+      #{File.read(file)}
+
+      --[[
+      #{license}
+      ]]
+    END_LUA
+  end
+end
+
+directory "lib/lua/djot"
