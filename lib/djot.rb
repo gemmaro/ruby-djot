@@ -9,15 +9,40 @@ module Djot
 
   LUA = Language::Lua.new.tap do |lua|
     lua.eval(<<~END_LUA)
-      function render_html(input)
-        local parser = require("djot").Parser:new(input)
+      function djot_parser_instance(input)
+        return require("djot").Parser:new(input)
+      end
+
+      function djot_render_html(input)
+        local parser = djot_parser_instance(input)
         parser:parse()
         return parser:render_html()
+      end
+
+      -- TODO
+      function djot_get_matches(input)
+        local parser = djot_parser_instance(input)
+        parser:parse()
+        return parser:get_matches()
+      end
+
+      function djot_render_matches(input)
+        local parser = djot_parser_instance(input)
+        parser:parse()
+        return parser:render_matches()
       end
     END_LUA
   end
 
   def self.render_html(input)
-    LUA.render_html(input)
+    LUA.djot_render_html(input)
+  end
+
+  # def self.matches(input)
+  #   LUA.djot_get_matches
+  # end
+
+  def self.render_matches(input)
+    LUA.djot_render_matches(input)
   end
 end
