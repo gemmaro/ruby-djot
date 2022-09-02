@@ -31,6 +31,12 @@ module Djot
         parser:parse()
         return parser:render_matches()
       end
+
+      function djot_render_ast(input)
+        local parser = djot_parser_instance(input)
+        parser:parse()
+        return parser:render_ast()
+      end
     END_LUA
   end
 
@@ -44,5 +50,9 @@ module Djot
 
   def self.render_matches(input)
     LUA.djot_render_matches(input)
+  end
+
+  def self.render_ast(input)
+    LUA.djot_render_ast(input)
   end
 end
