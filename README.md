@@ -37,7 +37,7 @@ and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
 ## Contributing
 
-Bug reports and pull requests are welcome on [GitLab](https://gitlab.com/gemmaro/djot).
+Bug reports and pull requests are welcome on [GitLab](https://gitlab.com/gemmaro/ruby-djot).
 This project is intended to be a safe,
 welcoming space for collaboration,
 and contributors are expected to adhere

@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+## [0.0.2] - 2022-09-03
+
+### Fixes
+
+* Repository URL
+
 ## [0.0.1] - 2022-09-03
 
 Initial release.

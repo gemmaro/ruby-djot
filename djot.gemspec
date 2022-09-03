@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
 
   spec.summary = "Call Lua Djot"
   spec.description = "Call Lua Djot for rendering Djot documents in HTML"
-  spec.homepage = "https://gitlab.com/gemmaro/djot"
+  spec.homepage = "https://gitlab.com/gemmaro/ruby-djot"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 2.6.0"
 
