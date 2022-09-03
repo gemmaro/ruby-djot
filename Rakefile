@@ -30,3 +30,11 @@ task copy: "lib/lua/djot" do
 end
 
 directory "lib/lua/djot"
+
+require "rdoc/task"
+
+RDoc::Task.new do |rdoc|
+  readme = "README.md"
+  rdoc.main = readme
+  rdoc.rdoc_files.include(readme, "lib/**/*.rb")
+end

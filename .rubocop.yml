@@ -13,5 +13,8 @@ Style/StringLiteralsInInterpolation:
 Layout/LineLength:
   Max: 120
 
+Style/Documentation:
+  Enabled: false
+
 require:
   - rubocop-rake

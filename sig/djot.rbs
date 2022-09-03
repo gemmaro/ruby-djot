@@ -1,4 +1,6 @@
 module Djot
   VERSION: String
-  # See the writing guide of rbs: https://github.com/ruby/rbs#guides
+  def self.render_html: (String) -> String
+  def self.render_matches: (String) -> String
+  def self.render_ast: (String) -> String
 end
