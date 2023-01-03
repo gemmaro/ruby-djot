@@ -35,6 +35,10 @@ which will create a git tag for the version,
 push git commits and the created tag,
 and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
+### TODO
+
+* Use [djot.js](https://github.com/jgm/djot.js)
+
 ## Contributing
 
 Bug reports and pull requests are welcome on [GitLab](https://gitlab.com/gemmaro/ruby-djot).
