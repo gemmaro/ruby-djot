@@ -21,6 +21,34 @@ class DjotTest < Test::Unit::TestCase
     assert_equal(expected, Djot::JavaScript.parse("This is *djot*"))
   end
 
+  test "parser with source positions" do
+    expected = { "children" =>
+                 [{ "children" =>
+                    [{ "pos" =>
+                       { "end" => { "col" => 8, "line" => 1, "offset" => 7 },
+                         "start" => { "col" => 1, "line" => 1, "offset" => 0 } },
+                       "tag" => "str",
+                       "text" => "This is " },
+                     { "children" =>
+                       [{ "pos" =>
+                          { "end" => { "col" => 13, "line" => 1, "offset" => 12 },
+                            "start" => { "col" => 10, "line" => 1, "offset" => 9 } },
+                          "tag" => "str",
+                          "text" => "djot" }],
+                       "pos" =>
+                          { "end" => { "col" => 14, "line" => 1, "offset" => 13 },
+                            "start" => { "col" => 9, "line" => 1, "offset" => 8 } },
+                       "tag" => "strong" }],
+                    "pos" =>
+                            { "end" => { "col" => 15, "line" => 1, "offset" => 14 },
+                              "start" => { "col" => 1, "line" => 1, "offset" => 0 } },
+                    "tag" => "para" }],
+                 "footnotes" => {},
+                 "references" => {},
+                 "tag" => "doc" }
+    assert_equal(expected, Djot::JavaScript.parse("This is *djot*", source_positions: true))
+  end
+
   # Lua
 
   test "render HTML" do

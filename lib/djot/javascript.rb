@@ -13,8 +13,13 @@ module Djot
       @context ||= ExecJS.compile(source)
     end
 
-    def self.parse(input)
-      context.call("djot.parse", input)
+    # Correspond to +djot.parse+ of djot.js
+    # (https://github.com/jgm/djot.js#parsing-djot-to-an-ast)
+    #
+    # TODO: support +warn+ option
+    def self.parse(input, source_positions: false)
+      context.call("djot.parse", input, { "sourcePositions" => source_positions })
+    end
     end
   end
 end
