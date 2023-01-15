@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.authors = ["gemmaro"]
   spec.email = ["gemmaro.dev@gmail.com"]
 
-  spec.summary = "Call Lua Djot"
-  spec.description = "Call Lua Djot for rendering Djot documents in HTML"
+  spec.summary = "Djot parser"
+  spec.description = "djot gem provides parsing functions using original JavaScript and Lua implementations"
   spec.homepage = "https://gitlab.com/gemmaro/ruby-djot"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 2.6.0"
