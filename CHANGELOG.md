@@ -4,7 +4,9 @@
 
 ### Added
 
-* `Djot::JavaScript.parse`: equivalent to `djot.parse` in [djot.js > Parsing djot to an AST](https://github.com/jgm/djot.js#parsing-djot-to-an-ast)
+* `Djot::JavaScript`
+  * `parse`: equivalent to `djot.parse` in [djot.js > Parsing djot to an AST](https://github.com/jgm/djot.js#parsing-djot-to-an-ast)
+  * `render_ast`: equivalent to `djot.renderAST` in [djot.js > Pretty-printing the djot AST](https://github.com/jgm/djot.js#pretty-printing-the-djot-ast)
 
 ## [0.0.4] - 2023-01-03
 
