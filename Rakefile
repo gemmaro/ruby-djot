@@ -13,7 +13,22 @@ require "rubocop/rake_task"
 
 RuboCop::RakeTask.new
 
-task default: %i[copy test rubocop]
+task default: %i[copy copy_js test rubocop]
+
+desc "Copy JavaScript files"
+task copy_js: "lib/js" do
+  license = File.read("vendor/djot.js/LICENSE")
+  source = File.read("vendor/djot.js/dist/djot.js")
+  File.write("lib/js/djot.js", <<~END_JS)
+    #{source}
+
+    /*
+    #{license}
+    */
+  END_JS
+end
+
+directory "lib/js"
 
 desc "Copy Lua files"
 task copy: "lib/lua/djot" do
