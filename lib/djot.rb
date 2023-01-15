@@ -1,6 +1,5 @@
-# frozen_string_literal: true
-
 require_relative "djot/version"
+require_relative "djot/javascript"
 require "language/lua"
 require "pathname"
 
