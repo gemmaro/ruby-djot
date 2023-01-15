@@ -9,6 +9,22 @@ class DjotTest < Test::Unit::TestCase
     end
   end
 
+  # JavaScript
+
+  test "parse" do
+    expected = { "children" =>
+                [{ "children" =>
+                  [{ "tag" => "str", "text" => "This is " },
+                   { "children" => [{ "tag" => "str", "text" => "djot" }], "tag" => "strong" }],
+                   "tag" => "para" }],
+                 "footnotes" => {},
+                 "references" => {},
+                 "tag" => "doc" }
+    assert_equal(expected, Djot::JavaScript.parse("This is *djot*"))
+  end
+
+  # Lua
+
   test "render HTML" do
     assert_equal("<p>This is <strong>djot</strong></p>\n", Djot.render_html("This is *djot*"))
   end
