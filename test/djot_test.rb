@@ -60,6 +60,10 @@ class DjotTest < Test::Unit::TestCase
     assert_equal(expected, Djot::JavaScript.render_ast(Djot::JavaScript.parse("This is *djot*")))
   end
 
+  test "render HTML (JavaScript)" do
+    assert_equal("<p>This is <strong>djot</strong></p>\n", Djot::JavaScript.render_html(Djot::JavaScript.parse("This is *djot*")))
+  end
+
   # Lua
 
   test "render HTML" do
