@@ -1,5 +1,7 @@
 # Djot
 
+[Djot](https://djot.net/) parser for Ruby, using original JavaScript ([jdm/djot.js](https://github.com/jgm/djot.js)) and Lua ([djot.lua](https://github.com/jgm/djot.lua)) implementations.
+
 ## Installation
 
 Install the gem and add to the application's Gemfile by executing:
@@ -35,10 +37,6 @@ which will create a git tag for the version,
 push git commits and the created tag,
 and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
-### TODO
-
-* Use [djot.js](https://github.com/jgm/djot.js)
-
 ## Contributing
 
 Bug reports and pull requests are welcome on [GitLab](https://gitlab.com/gemmaro/ruby-djot).
@@ -46,6 +44,12 @@ This project is intended to be a safe,
 welcoming space for collaboration,
 and contributors are expected to adhere
 to the [code of conduct](CODE_OF_CONDUCT.md).
+
+## Acknowledgement
+
+As mentioned earlier, this library only calls the original JavaScript and Lua implementations; the important work is done in those libraries.
+The Lua implementation was sufficient to render in HTML, but thanks to the more Ruby-friendly JavaScript implementation, even more flexible operations can now be performed in Ruby.
+This gem also uses [rails/execjs](https://github.com/rails/execjs) and [ruby-lua](https://github.com/glejeune/ruby-lua) to call JavaScript and Lua source codes respectibly.
 
 ## License
 
