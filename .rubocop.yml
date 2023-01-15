@@ -18,5 +18,8 @@ Layout/LineLength:
 Style/Documentation:
   Enabled: false
 
+Style/FrozenStringLiteralComment:
+  EnforcedStyle: never
+
 require:
   - rubocop-rake
