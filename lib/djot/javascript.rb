@@ -29,5 +29,14 @@ module Djot
     def self.render_ast(doc)
       context.call("djot.renderAST", doc)
     end
+
+    # Correspond to +djot.renderHTML+
+    # (https://github.com/jgm/djot.js#rendering-the-djot-ast-to-html)
+    # TODO: support +options+
+    def self.render_html(doc)
+      context.call("djot.renderHTML", doc)
+    end
+
+    # TODO
   end
 end
