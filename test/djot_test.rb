@@ -104,6 +104,10 @@ class DjotTest < Test::Unit::TestCase
                                                 "pandoc-api-version" => [1, 22, 2, 1] }))
   end
 
+  test "version" do
+    assert_equal("0.2.1", Djot::JavaScript::VERSION)
+  end
+
   # Lua
 
   test "render HTML" do
