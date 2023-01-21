@@ -53,7 +53,7 @@ module Djot
     # Correspond to +djot.toPandoc+
     # (https://github.com/jgm/djot.js#pandoc-interoperability)
     #
-    # TODO: support +warn+ option
+    # TODO: support +warn+ and +smart_punctuation_map+ option
     def self.to_pandoc(doc)
       context.call("djot.toPandoc", doc)
     end
