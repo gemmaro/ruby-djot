@@ -83,6 +83,27 @@ class DjotTest < Test::Unit::TestCase
                  Djot::JavaScript.to_pandoc(Djot::JavaScript.parse("This is *djot*")))
   end
 
+  test "from Pandoc" do
+    assert_equal({ "children" =>
+                  [{ "children" =>
+                    [{ "tag" => "str", "text" => "This is " },
+                     { "children" => [{ "tag" => "str", "text" => "djot" }], "tag" => "strong" }],
+                     "tag" => "para" }],
+                   "footnotes" => {},
+                   "references" => {},
+                   "tag" => "doc" },
+                 Djot::JavaScript.from_pandoc({ "blocks" =>
+                                                 [{ "c" =>
+                                                   [{ "c" => "This", "t" => "Str" },
+                                                    { "t" => "Space" },
+                                                    { "c" => "is", "t" => "Str" },
+                                                    { "t" => "Space" },
+                                                    { "c" => [{ "c" => "djot", "t" => "Str" }], "t" => "Strong" }],
+                                                    "t" => "Para" }],
+                                                "meta" => {},
+                                                "pandoc-api-version" => [1, 22, 2, 1] }))
+  end
+
   # Lua
 
   test "render HTML" do
