@@ -14,10 +14,12 @@ RuboCop::RakeTask.new
 task default: %i[copy copy_js test rubocop]
 
 desc "Copy JavaScript files"
-task copy_js: "lib/js" do
+task copy_js: "lib/js/djot.js"
+
+file "lib/js/djot.js" => ["vendor/djot.js/dist/djot.js", "vendor/djot.js/LICENSE", "lib/js"] do |t|
   license = File.read("vendor/djot.js/LICENSE")
-  source = File.read("vendor/djot.js/dist/djot.js")
-  File.write("lib/js/djot.js", <<~END_JS)
+  source = File.read(t.source)
+  File.write(t.name, <<~END_JS)
     #{source}
 
     /*
