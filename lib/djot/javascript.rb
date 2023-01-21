@@ -44,6 +44,13 @@ module Djot
       context.call("djot.renderDjot", doc)
     end
 
+    # Correspond to +djot.toPandoc+
+    # (https://github.com/jgm/djot.js#pandoc-interoperability)
+    # TODO: support options
+    def self.to_pandoc(doc)
+      context.call("djot.toPandoc", doc)
+    end
+
     # TODO
   end
 end
