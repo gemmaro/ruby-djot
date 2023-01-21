@@ -37,6 +37,11 @@ which will create a git tag for the version,
 push git commits and the created tag,
 and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
+### TODO
+
+* Use [Attach global Ruby functions to your JavaScript context](https://github.com/rubyjs/mini_racer#attach-global-ruby-functions-to-your-javascript-context) for the functions' options which accepts lambda expressions.
+* Create document class (and more) for idiomatic control in Ruby.
+
 ## Contributing
 
 Bug reports and pull requests are welcome on [GitLab](https://gitlab.com/gemmaro/ruby-djot).

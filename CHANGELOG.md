@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+Note that the default parser might be changed from djot.lua to djot.js in future version.
+
 ### Added
 
 * djot.js functionalities. Some options are not supported yet.
