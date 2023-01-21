@@ -37,6 +37,13 @@ module Djot
       context.call("djot.renderHTML", doc)
     end
 
+    # Correspond to +djot.renderDjot+
+    # (https://github.com/jgm/djot.js#rendering-djot)
+    # TODO: support options
+    def self.render_djot(doc)
+      context.call("djot.renderDjot", doc)
+    end
+
     # TODO
   end
 end
