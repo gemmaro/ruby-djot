@@ -11,6 +11,7 @@
     * `render_html`: `djot.renderHTML`
     * `render_djot`: `djot.renderDjot`
     * `to_pandoc`: `djot.toPandoc`
+    * `from_pandoc`: `djot.fromPandoc`
 
 ## [0.0.4] - 2023-01-03
 
