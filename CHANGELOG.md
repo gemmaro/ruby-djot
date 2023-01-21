@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [0.0.5] - 2023-01-21
+
 Note that the default parser might be changed from djot.lua to djot.js in future version.
 
 ### Added
