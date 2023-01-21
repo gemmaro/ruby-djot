@@ -4,10 +4,12 @@
 
 ### Added
 
-* `Djot::JavaScript`
-  * `parse`: equivalent to `djot.parse`
-  * `render_ast`: equivalent to `djot.renderAST`
-  * `render_html`: equivalent to `djot.renderHTML`
+* djot.js functionalities. Some options are not supported yet.
+  * `Djot::JavaScript`
+    * `parse`: `djot.parse`
+    * `render_ast`: `djot.renderAST`
+    * `render_html`: `djot.renderHTML`
+    * `render_djot`: `djot.renderDjot`
 
 ## [0.0.4] - 2023-01-03
 
