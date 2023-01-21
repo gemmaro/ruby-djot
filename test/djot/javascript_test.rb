@@ -58,8 +58,64 @@ module Djot
                    Djot::JavaScript.render_html(Djot::JavaScript.parse("This is *djot*")))
     end
 
-    test "render Djot" do
+    test "render Djot from short example" do
       assert_equal("This is *djot*\n", Djot::JavaScript.render_djot(Djot::JavaScript.parse("This is *djot*")))
+    end
+
+    LONG_LINES = Array.new(3, Array.new(100, "word").join(" ")).join("\n")
+
+    test "render Djot from long lines with default option" do
+      expected = <<~END_TEXT
+        word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word
+        word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word
+        word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word
+      END_TEXT
+
+      assert_equal(expected, Djot::JavaScript.render_djot(Djot::JavaScript.parse(LONG_LINES)))
+    end
+
+    test "render Djot from long lines with wrapped option" do
+      expected = <<~END_TEXT
+        word word word word word word word word word word word word word word word word
+        word word word word word word word word word word word word word word word word
+        word word word word word word word word word word word word word word word word
+        word word word word word word word word word word word word word word word word
+        word word word word word word word word word word word word word word word word
+        word word word word word word word word word word word word word word word word
+        word word word word word word word word word word word word word word word word
+        word word word word word word word word word word word word word word word word
+        word word word word word word word word word word word word word word word word
+        word word word word word word word word word word word word word word word word
+        word word word word word word word word word word word word word word word word
+        word word word word word word word word word word word word word word word word
+        word word word word word word word word word word word word word word word word
+        word word word word word word word word word word word word word word word word
+        word word word word word word word word word word word word word word word word
+        word word word word word word word word word word word word word word word word
+        word word word word word word word word word word word word word word word word
+        word word word word word word word word word word word word word word word word
+        word word word word word word word word word word word word
+      END_TEXT
+
+      assert_equal(expected, Djot::JavaScript.render_djot(Djot::JavaScript.parse(LONG_LINES), wrap_width: 80))
+    end
+
+    test "render Djot from long lines with not wrapped and line breaked option" do
+      expected = <<~END_TEXT
+        word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word
+        word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word
+        word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word
+      END_TEXT
+
+      assert_equal(expected, Djot::JavaScript.render_djot(Djot::JavaScript.parse(LONG_LINES), wrap_width: 0))
+    end
+
+    test "render Djot from long lines with not wrapped and spaced option" do
+      expected = <<~END_TEXT
+        word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word
+      END_TEXT
+
+      assert_equal(expected, Djot::JavaScript.render_djot(Djot::JavaScript.parse(LONG_LINES), wrap_width: -1))
     end
 
     test "to Pandoc" do
