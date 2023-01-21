@@ -58,6 +58,10 @@ module Djot
       context.call("djot.fromPandoc", pandoc)
     end
 
-    # TODO
+    # TODO: support filters
+
+    # Correspond to +djot.version+
+    # (https://github.com/jgm/djot.js#getting-the-version)
+    VERSION = context.eval("djot.version")
   end
 end
