@@ -2,6 +2,7 @@ require "language/lua"
 require "pathname"
 
 module Djot
+  # Functionalities of djot (Lua implementation)
   module Lua
     LUA = Language::Lua.new
     LUA.eval(<<~END_LUA)
