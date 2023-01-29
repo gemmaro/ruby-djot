@@ -53,3 +53,8 @@ RDoc::Task.new do |rdoc|
   rdoc.main = readme
   rdoc.rdoc_files.include(readme, "lib/**/*.rb")
 end
+
+desc "Lint Markdown files"
+task "mdl" do
+  sh "bundle exec mdl CHANGELOG.md README.md"
+end

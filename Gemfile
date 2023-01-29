@@ -2,6 +2,7 @@ source "https://rubygems.org"
 
 gemspec
 
+gem "mdl", "~> 0.12.0"
 gem "rake", "~> 13.0"
 gem "rdoc", "~> 6.4"
 gem "rubocop", "~> 1.21"
