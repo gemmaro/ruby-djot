@@ -57,7 +57,7 @@ to the [code of conduct](CODE_OF_CONDUCT.md).
 
 As mentioned earlier, this library only calls the original JavaScript and Lua implementations; the important work is done in those libraries.
 The Lua implementation was sufficient to render in HTML, but thanks to the more Ruby-friendly JavaScript implementation, even more flexible operations can now be performed in Ruby.
-This gem also uses [rails/execjs](https://github.com/rails/execjs) and [ruby-lua](https://github.com/glejeune/ruby-lua) to call JavaScript and Lua source codes respectibly.
+This gem also uses [MiniRacer](https://github.com/rubyjs/mini_racer) and [ruby-lua](https://github.com/glejeune/ruby-lua) to call JavaScript and Lua source codes respectibly.
 
 ## License
 

@@ -1,5 +1,5 @@
 require "pathname"
-require "execjs"
+require "mini_racer"
 
 module Djot
   # Functionalities of djot.js
@@ -10,8 +10,13 @@ module Djot
       @source ||= PATH.read
     end
 
+    # :nodoc:
     def self.context
-      @context ||= ExecJS.compile(source)
+      return @context if @context
+
+      context = MiniRacer::Context.new
+      context.eval(source)
+      @context = context
     end
 
     # Correspond to +djot.parse+
@@ -19,7 +24,7 @@ module Djot
     #
     # TODO: support +warn+ option
     def self.parse(input, source_positions: false)
-      context.call("djot.parse", input, { "sourcePositions" => source_positions })
+      call("parse", input, { "sourcePositions" => source_positions })
     end
 
     # TODO: support +djot.EventParser+
@@ -28,7 +33,7 @@ module Djot
     # Correspond to +djot.renderAST+
     # (https://github.com/jgm/djot.js#pretty-printing-the-djot-ast)
     def self.render_ast(doc)
-      context.call("djot.renderAST", doc)
+      call("renderAST", doc)
     end
 
     # Correspond to +djot.renderHTML+
@@ -36,7 +41,7 @@ module Djot
     #
     # TODO: support +options+
     def self.render_html(doc)
-      context.call("djot.renderHTML", doc)
+      call("renderHTML", doc)
     end
 
     # Correspond to +djot.renderDjot+
@@ -47,7 +52,7 @@ module Djot
       options = {}
       options["wrapWidth"] = wrap_width if wrap_width
 
-      context.call("djot.renderDjot", doc, options)
+      call("renderDjot", doc, options)
     end
 
     # Correspond to +djot.toPandoc+
@@ -55,7 +60,7 @@ module Djot
     #
     # TODO: support +warn+ and +smart_punctuation_map+ option
     def self.to_pandoc(doc)
-      context.call("djot.toPandoc", doc)
+      call("toPandoc", doc)
     end
 
     # Correspond to +djot.fromPandoc+
@@ -63,7 +68,7 @@ module Djot
     #
     # TODO: support options
     def self.from_pandoc(pandoc)
-      context.call("djot.fromPandoc", pandoc)
+      call("fromPandoc", pandoc)
     end
 
     # TODO: support filters
@@ -71,5 +76,10 @@ module Djot
     # Correspond to +djot.version+
     # (https://github.com/jgm/djot.js#getting-the-version)
     VERSION = context.eval("djot.version")
+
+    # :nodoc:
+    def self.call(name, *args)
+      context.eval("djot.#{name}.apply(this, #{::JSON.generate(args)})")
+    end
   end
 end

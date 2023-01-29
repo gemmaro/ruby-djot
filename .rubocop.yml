@@ -21,5 +21,10 @@ Style/Documentation:
 Style/FrozenStringLiteralComment:
   EnforcedStyle: never
 
+Style/DocumentDynamicEvalDefinition:
+  Enabled: true
+  Exclude:
+    - lib/djot/javascript.rb
+
 require:
   - rubocop-rake

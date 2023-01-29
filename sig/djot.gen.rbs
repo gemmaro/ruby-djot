@@ -10,18 +10,19 @@ module Djot
 
   module JavaScript
     PATH: Pathname
-    VERSION: untyped
-    self.@context: untyped
+    VERSION: (Array[untyped] | Hash[untyped, untyped] | MiniRacer::JavaScriptFunction | Time)?
+    self.@context: MiniRacer::Context
     self.@source: String
 
     def self.source: -> String
-    def self.context: -> untyped
-    def self.parse: (untyped input, ?source_positions: false) -> untyped
-    def self.render_ast: (untyped doc) -> untyped
-    def self.render_html: (untyped doc) -> untyped
-    def self.render_djot: (untyped doc, ?wrap_width: nil) -> untyped
-    def self.to_pandoc: (untyped doc) -> untyped
-    def self.from_pandoc: (untyped pandoc) -> untyped
+    def self.context: -> MiniRacer::Context?
+    def self.parse: (untyped input, ?source_positions: false) -> ((Array[untyped] | Hash[untyped, untyped] | MiniRacer::JavaScriptFunction | Time)?)
+    def self.render_ast: (untyped doc) -> ((Array[untyped] | Hash[untyped, untyped] | MiniRacer::JavaScriptFunction | Time)?)
+    def self.render_html: (untyped doc) -> ((Array[untyped] | Hash[untyped, untyped] | MiniRacer::JavaScriptFunction | Time)?)
+    def self.render_djot: (untyped doc, ?wrap_width: nil) -> ((Array[untyped] | Hash[untyped, untyped] | MiniRacer::JavaScriptFunction | Time)?)
+    def self.to_pandoc: (untyped doc) -> ((Array[untyped] | Hash[untyped, untyped] | MiniRacer::JavaScriptFunction | Time)?)
+    def self.from_pandoc: (untyped pandoc) -> ((Array[untyped] | Hash[untyped, untyped] | MiniRacer::JavaScriptFunction | Time)?)
+    def self.call: (String name, *Hash[String, false] args) -> ((Array[untyped] | Hash[untyped, untyped] | MiniRacer::JavaScriptFunction | Time)?)
   end
 
   module Lua

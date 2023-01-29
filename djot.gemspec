@@ -27,6 +27,6 @@ Gem::Specification.new do |spec|
 
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "execjs", "~> 2.8"
+  spec.add_dependency "mini_racer", "~> 0.6.3"
   spec.add_dependency "ruby-lua", "~> 0.4"
 end
