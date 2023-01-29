@@ -41,6 +41,9 @@ and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
 * Use [Attach global Ruby functions to your JavaScript context](https://github.com/rubyjs/mini_racer#attach-global-ruby-functions-to-your-javascript-context) for the functions' options which accepts lambda expressions.
 * Create document class (and more) for idiomatic control in Ruby.
+* Write parser in pure Ruby.
+* Make JavaScript version as default. Currently the default is Lua version.
+* Update Lua implementation from djot to djot.lua.
 
 ## Contributing
 
