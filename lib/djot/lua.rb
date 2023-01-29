@@ -4,7 +4,7 @@ require "pathname"
 module Djot
   # Functionalities of djot (Lua implementation)
   module Lua
-    LUA = Language::Lua.new
+    LUA = Language::Lua.new # :nodoc:
     LUA.eval(<<~END_LUA)
       function djot_parser(input)
         local parser = require("djot").Parser:new(input)
@@ -25,7 +25,7 @@ module Djot
       end
     END_LUA
 
-    ROOT = Pathname(__dir__ || (raise Error)) / ".." / "lua"
+    ROOT = Pathname(__dir__ || (raise Error)) / ".." / "lua" # :nodoc:
 
     def self.render_html(input)
       run_at_root do
@@ -45,7 +45,7 @@ module Djot
       end
     end
 
-    def self.run_at_root(&block)
+    def self.run_at_root(&block) # :nodoc:
       Dir.chdir(ROOT.to_s, &block)
     end
   end
