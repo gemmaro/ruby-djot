@@ -34,8 +34,33 @@ module Djot
       context.eval("djot.parse.apply(this, args)")
     end
 
-    # TODO: support +djot.EventParser+
+    # Correspond to +djot.parseEvents+
     # (https://github.com/jgm/djot.js#parsing-djot-to-a-stream-of-events)
+    def self.parse_events(input, warn: nil, &block)
+      context.eval("args = #{JSON.generate([input, {}])}")
+      if warn
+        context.attach("warn", warn)
+        context.eval('args[1]["warn"] = warn')
+      end
+      source = if block_given?
+                 context.attach("fun", block)
+                 <<~END_JAVASCRIPT
+                   for (let event of djot.parseEvents(...args)) {
+                     fun(event)
+                   }
+                 END_JAVASCRIPT
+               else
+                 # TODO: Use enum_for
+                 <<~END_JAVASCRIPT
+                   events = []
+                   for (let event of djot.parseEvents(...args)) {
+                     events.push(event)
+                   }
+                   events
+                 END_JAVASCRIPT
+               end
+      context.eval(source)
+    end
 
     # Correspond to +djot.renderAST+
     # (https://github.com/jgm/djot.js#pretty-printing-the-djot-ast)

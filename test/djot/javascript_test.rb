@@ -48,6 +48,31 @@ module Djot
       assert_equal([{ "message" => "Unclosed verbatim", "offset" => 3 }], warnings)
     end
 
+    test "event parser" do
+      warnings = []
+      events = []
+      Djot::JavaScript.parse_events("`aaa", warn: proc { |message| warnings << message }) do |event|
+        events << event
+      end
+      assert_equal([{ "message" => "Unclosed verbatim", "offset" => 3 }], warnings)
+      assert_equal([{ "annot" => "+para", "endpos" => 0, "startpos" => 0 },
+                    { "annot" => "+verbatim", "endpos" => 0, "startpos" => 0 },
+                    { "annot" => "str", "endpos" => 3, "startpos" => 1 },
+                    { "annot" => "-verbatim", "endpos" => 3, "startpos" => 3 },
+                    { "annot" => "-para", "endpos" => 4, "startpos" => 4 }], events)
+    end
+
+    test "event parser without block" do
+      warnings = []
+      events = Djot::JavaScript.parse_events("`aaa", warn: proc { |message| warnings << message })
+      assert_equal([{ "message" => "Unclosed verbatim", "offset" => 3 }], warnings)
+      assert_equal([{ "annot" => "+para", "endpos" => 0, "startpos" => 0 },
+                    { "annot" => "+verbatim", "endpos" => 0, "startpos" => 0 },
+                    { "annot" => "str", "endpos" => 3, "startpos" => 1 },
+                    { "annot" => "-verbatim", "endpos" => 3, "startpos" => 3 },
+                    { "annot" => "-para", "endpos" => 4, "startpos" => 4 }], events)
+    end
+
     test "render AST" do
       expected = <<~END_TEXT
         doc
