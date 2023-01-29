@@ -24,24 +24,28 @@ module Djot
       end
     END_LUA
 
-    ROOT = Pathname(__dir__) / ".." / "lua"
+    ROOT = Pathname(__dir__ || (raise Error)) / ".." / "lua"
 
     def self.render_html(input)
-      Dir.chdir(ROOT) do
+      run_at_root do
         LUA.djot_render_html(input)
       end
     end
 
     def self.render_matches(input)
-      Dir.chdir(ROOT) do
+      run_at_root do
         LUA.djot_render_matches(input)
       end
     end
 
     def self.render_ast(input)
-      Dir.chdir(ROOT) do
+      run_at_root do
         LUA.djot_render_ast(input)
       end
+    end
+
+    def self.run_at_root(&block)
+      Dir.chdir(ROOT.to_s, &block)
     end
   end
 end

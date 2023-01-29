@@ -58,3 +58,15 @@ desc "Lint Markdown files"
 task "mdl" do
   sh "bundle exec mdl CHANGELOG.md README.md"
 end
+
+desc "Type check"
+task tc: :sig do
+  sh "bundle exec steep check"
+end
+
+desc "Update generated RBS"
+task sig: "sig/djot.gen.rbs"
+
+file "sig/djot.gen.rbs" => ["sig/djot.rbs", *Dir["lib/**/*.rb"]] do |t|
+  sh "bundle", "exec", "typeprof", "-o", t.name, *t.sources
+end

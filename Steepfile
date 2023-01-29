@@ -3,6 +3,8 @@ D = Steep::Diagnostic
 target :lib do
   signature "sig"
 
+  library "pathname"
+
   check "lib"
   check "Gemfile"
 

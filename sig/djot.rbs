@@ -1,6 +1,11 @@
+# TODO
 module Djot
-  VERSION: String
-  def self.render_html: (String) -> String
-  def self.render_matches: (String) -> String
-  def self.render_ast: (String) -> String
+  module JavaScript
+  end
+
+  module Lua
+  end
+
+  class Error < StandardError
+  end
 end

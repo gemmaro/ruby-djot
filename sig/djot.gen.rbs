@@ -1,0 +1,36 @@
+# TypeProf 0.21.4
+
+# Classes
+module Djot
+  VERSION: String
+
+  def self.render_html: (untyped input) -> untyped
+  def self.render_matches: (untyped input) -> untyped
+  def self.render_ast: (untyped input) -> untyped
+
+  module JavaScript
+    PATH: Pathname
+    VERSION: untyped
+    self.@context: untyped
+    self.@source: String
+
+    def self.source: -> String
+    def self.context: -> untyped
+    def self.parse: (untyped input, ?source_positions: false) -> untyped
+    def self.render_ast: (untyped doc) -> untyped
+    def self.render_html: (untyped doc) -> untyped
+    def self.render_djot: (untyped doc, ?wrap_width: nil) -> untyped
+    def self.to_pandoc: (untyped doc) -> untyped
+    def self.from_pandoc: (untyped pandoc) -> untyped
+  end
+
+  module Lua
+    LUA: untyped
+    ROOT: Pathname
+
+    def self.render_html: (untyped input) -> untyped
+    def self.render_matches: (untyped input) -> untyped
+    def self.render_ast: (untyped input) -> untyped
+    def self.run_at_root: { (String) -> untyped } -> untyped
+  end
+end

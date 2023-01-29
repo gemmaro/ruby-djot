@@ -4,7 +4,7 @@ require "execjs"
 module Djot
   # Functionalities of djot.js
   module JavaScript
-    PATH = Pathname(__dir__) / ".." / "js" / "djot.js"
+    PATH = Pathname(__dir__ || (raise Error)) / ".." / "js" / "djot.js"
 
     def self.source
       @source ||= PATH.read
