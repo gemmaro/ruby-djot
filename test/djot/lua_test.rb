@@ -40,7 +40,7 @@ module Djot
 
     Case = Struct.new(:ticks, :modifier, :input, :output, keyword_init: true)
 
-    Dir["#{__dir__}/../vendor/djot/test/*"].each do |path|
+    Dir["#{__dir__}/../../vendor/djot/test/*"].each do |path|
       state = States::IGNORE
       current_case = Case.new
       current_case.input = ""
