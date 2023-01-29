@@ -11,7 +11,7 @@ require "rubocop/rake_task"
 
 RuboCop::RakeTask.new
 
-task default: %i[copy copy_js test rubocop]
+task default: %i[copy copy_js test rubocop sig mdl]
 
 desc "Copy JavaScript files"
 task copy_js: "lib/js/djot.js"

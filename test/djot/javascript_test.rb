@@ -42,6 +42,12 @@ module Djot
       assert_equal(expected, Djot::JavaScript.parse("This is *djot*", source_positions: true))
     end
 
+    test "parse with warn" do
+      warnings = []
+      Djot::JavaScript.parse("`aaa", warn: proc { |message| warnings << message })
+      assert_equal([{ "message" => "Unclosed verbatim", "offset" => 3 }], warnings)
+    end
+
     test "render AST" do
       expected = <<~END_TEXT
         doc

@@ -14,16 +14,24 @@ module Djot
       return @context if @context
 
       context = MiniRacer::Context.new
+      context.eval("let args, result")
       context.eval(source)
       @context = context
     end
 
     # Correspond to +djot.parse+
     # (https://github.com/jgm/djot.js#parsing-djot-to-an-ast)
-    #
-    # TODO: support +warn+ option
-    def self.parse(input, source_positions: false)
-      call("parse", input, { "sourcePositions" => source_positions })
+    def self.parse(input, source_positions: nil, warn: nil)
+      args = [input]
+      options = {}
+      options["sourcePositions"] = source_positions if source_positions
+      args << options
+      context.eval("args = #{JSON.generate(args)}")
+      if warn
+        context.attach("warn", warn)
+        context.eval('args[1]["warn"] = warn')
+      end
+      context.eval("djot.parse.apply(this, args)")
     end
 
     # TODO: support +djot.EventParser+

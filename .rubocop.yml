@@ -23,5 +23,8 @@ Style/DocumentDynamicEvalDefinition:
   Exclude:
     - lib/djot/javascript.rb
 
+Metrics/ClassLength:
+  Enabled: false
+
 require:
   - rubocop-rake

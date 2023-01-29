@@ -6,6 +6,7 @@
 
 * `Djot::Lua` module, which contains ex-`Djot.render_*` methods.
   Now `Djot.render_*` methods are pointers to `Djot::Lua.render_*` (default is not changed for this release).
+* Option `warn` for `djot.parse`.
 
 ### Changed
 
