@@ -2,6 +2,11 @@
 
 ## [Unreleased]
 
+### Added
+
+* `Djot::Lua` module, which contains ex-`Djot.render_*` methods.
+  Now `Djot.render_*` methods are pointers to `Djot::Lua.render_*` (default is not changed for this release).
+
 ## [0.0.5] - 2023-01-21
 
 Note that the default parser might be changed from djot.lua to djot.js in future version.
