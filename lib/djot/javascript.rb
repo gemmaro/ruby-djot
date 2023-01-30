@@ -83,8 +83,6 @@ module Djot
 
     # Correspond to +djot.renderDjot+
     # (https://github.com/jgm/djot.js#rendering-djot)
-    #
-    # TODO: support options
     def self.render_djot(doc, wrap_width: nil)
       options = {}
       options["wrapWidth"] = wrap_width if wrap_width
