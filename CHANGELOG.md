@@ -10,6 +10,8 @@
 * `Djot::JavaScript.parse_events` method.
 * Option `warn` for `Djot::JavaScript.render_html`.
   (Option `overrides` are not yet supported.)
+* Option `warn` for `Djot::JavaScript.to_pandoc`.
+  (Please caution that this has not yet tested.)
 
 ### Changed
 

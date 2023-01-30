@@ -21,7 +21,7 @@ module Djot
     def self.render_ast: (untyped doc) -> ((Array[untyped] | Hash[untyped, untyped] | MiniRacer::JavaScriptFunction | Time)?)
     def self.render_html: (untyped doc, ?warn: nil) -> ((Array[untyped] | Hash[untyped, untyped] | MiniRacer::JavaScriptFunction | Time)?)
     def self.render_djot: (untyped doc, ?wrap_width: nil) -> ((Array[untyped] | Hash[untyped, untyped] | MiniRacer::JavaScriptFunction | Time)?)
-    def self.to_pandoc: (untyped doc) -> ((Array[untyped] | Hash[untyped, untyped] | MiniRacer::JavaScriptFunction | Time)?)
+    def self.to_pandoc: (untyped doc, ?warn: nil) -> ((Array[untyped] | Hash[untyped, untyped] | MiniRacer::JavaScriptFunction | Time)?)
     def self.from_pandoc: (untyped pandoc) -> ((Array[untyped] | Hash[untyped, untyped] | MiniRacer::JavaScriptFunction | Time)?)
     def self.call: (String name, *Hash[String, untyped] args) -> ((Array[untyped] | Hash[untyped, untyped] | MiniRacer::JavaScriptFunction | Time)?)
   end

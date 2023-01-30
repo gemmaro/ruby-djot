@@ -93,9 +93,17 @@ module Djot
     # Correspond to +djot.toPandoc+
     # (https://github.com/jgm/djot.js#pandoc-interoperability)
     #
-    # TODO: support +warn+ and +smart_punctuation_map+ option
-    def self.to_pandoc(doc)
-      call("toPandoc", doc)
+    # CAUTION: +warn+ option hasn't yet tested.
+    # There may be bugs.
+    #
+    # TODO: support +smart_punctuation_map+ option
+    def self.to_pandoc(doc, warn: nil)
+      context.eval("args = #{JSON.generate([doc, {}])}")
+      if warn
+        context.attach("warn", warn)
+        context.eval('args[1]["warn"] = warn')
+      end
+      context.eval("djot.toPandoc.apply(this, args)")
     end
 
     # Correspond to +djot.fromPandoc+

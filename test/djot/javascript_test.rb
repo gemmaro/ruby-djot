@@ -171,6 +171,13 @@ module Djot
                    Djot::JavaScript.to_pandoc(Djot::JavaScript.parse("This is *djot*")))
     end
 
+    # test "to Pandoc with warn" do
+    #   warnings = []
+    #   Djot::JavaScript.to_pandoc(Djot::JavaScript.parse("TODO"),
+    #                             warn: proc { |warning| warnings << warning })
+    #   assert_equal([], warnings)
+    # end
+
     test "from Pandoc" do
       assert_equal({ "children" =>
                      [{ "children" =>
