@@ -8,6 +8,8 @@
   Now `Djot.render_*` methods are pointers to `Djot::Lua.render_*` (default is not changed for this release).
 * Option `warn` for `Djot::JavaScript.parse`.
 * `Djot::JavaScript.parse_events` method.
+* Option `warn` for `Djot::JavaScript.render_html`.
+  (Option `overrides` are not yet supported.)
 
 ### Changed
 

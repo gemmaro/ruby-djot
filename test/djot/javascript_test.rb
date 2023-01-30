@@ -89,6 +89,14 @@ module Djot
                    Djot::JavaScript.render_html(Djot::JavaScript.parse("This is *djot*")))
     end
 
+    test "render HTML with warn" do
+      warnings = []
+      assert_equal("<p><a>bbb</a></p>\n",
+                   Djot::JavaScript.render_html(Djot::JavaScript.parse("[bbb][]"),
+                                                warn: proc { |warning| warnings << warning }))
+      assert_equal([{ "message" => "Reference \"bbb\" not found" }], warnings)
+    end
+
     test "render Djot from short example" do
       assert_equal("This is *djot*\n", Djot::JavaScript.render_djot(Djot::JavaScript.parse("This is *djot*")))
     end

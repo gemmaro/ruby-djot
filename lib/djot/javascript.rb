@@ -71,9 +71,14 @@ module Djot
     # Correspond to +djot.renderHTML+
     # (https://github.com/jgm/djot.js#rendering-the-djot-ast-to-html)
     #
-    # TODO: support +options+
-    def self.render_html(doc)
-      call("renderHTML", doc)
+    # TODO: support +overrides+ option
+    def self.render_html(doc, warn: nil)
+      context.eval("args = #{JSON.generate([doc, {}])}")
+      if warn
+        context.attach("warn", warn)
+        context.eval('args[1]["warn"] = warn')
+      end
+      context.eval("djot.renderHTML.apply(this, args)")
     end
 
     # Correspond to +djot.renderDjot+
