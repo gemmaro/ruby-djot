@@ -178,6 +178,39 @@ module Djot
     #   assert_equal([], warnings)
     # end
 
+    # TODO: check that non breaking space and quotes works
+    test "toPandoc with smart punctuation map" do
+      assert_equal({ "blocks" =>
+                    [{ "c" =>
+                      [{ "c" => "aaa", "t" => "Str" },
+                       { "c" => " ", "t" => "Str" },
+                       { "c" => "aaa", "t" => "Str" },
+                       { "c" => "<ellipses>", "t" => "Str" },
+                       { "t" => "Space" },
+                       { "c" => "aaa", "t" => "Str" },
+                       { "c" => "<en_dash>", "t" => "Str" },
+                       { "c" => "aaa", "t" => "Str" },
+                       { "c" => "<em_dash>", "t" => "Str" },
+                       { "c" => "aaa", "t" => "Str" },
+                       { "t" => "Space" },
+                       { "c" => [{ "t" => "SingleQuote" }, [{ "c" => "aaa", "t" => "Str" }]], "t" => "Quoted" },
+                       { "t" => "Space" },
+                       { "c" => [{ "t" => "DoubleQuote" }, [{ "c" => "aaa", "t" => "Str" }]],
+                         "t" => "Quoted" }],
+                       "t" => "Para" }],
+                     "meta" => {},
+                     "pandoc-api-version" => [1, 22, 2, 1] },
+                   Djot::JavaScript.to_pandoc(Djot::JavaScript.parse("aaa\\ aaa... aaa--aaa---aaa 'aaa' \"aaa\""),
+                                              smart_punctuation_map: { non_breaking_space: "<non_breaking_space>",
+                                                                       ellipses: "<ellipses>",
+                                                                       em_dash: "<em_dash>",
+                                                                       en_dash: "<en_dash>",
+                                                                       left_single_quote: "<left_single_quote>",
+                                                                       right_single_quote: "<right_single_quote>",
+                                                                       left_double_quote: "<left_double_quote>",
+                                                                       right_double_quote: "<right_double_quote>" }))
+    end
+
     test "from Pandoc" do
       assert_equal({ "children" =>
                      [{ "children" =>

@@ -95,10 +95,10 @@ module Djot
     #
     # CAUTION: +warn+ option hasn't yet tested.
     # There may be bugs.
-    #
-    # TODO: support +smart_punctuation_map+ option
-    def self.to_pandoc(doc, warn: nil)
-      context.eval("args = #{JSON.generate([doc, {}])}")
+    def self.to_pandoc(doc, warn: nil, smart_punctuation_map: nil)
+      options = {}
+      options["smartPunctuationMap"] = smart_punctuation_map if smart_punctuation_map
+      context.eval("args = #{JSON.generate([doc, options])}")
       if warn
         context.attach("warn", warn)
         context.eval('args[1]["warn"] = warn')
