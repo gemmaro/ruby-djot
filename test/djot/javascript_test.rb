@@ -171,6 +171,7 @@ module Djot
                    Djot::JavaScript.to_pandoc(Djot::JavaScript.parse("This is *djot*")))
     end
 
+    # FIXME: warnings is empty for some reason
     # test "to Pandoc with warn" do
     #   warnings = []
     #   Djot::JavaScript.to_pandoc(Djot::JavaScript.parse("TODO"),
