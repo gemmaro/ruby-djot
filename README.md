@@ -20,7 +20,23 @@ gem install djot
 
 ```ruby
 require 'djot'
+
 Djot.render_html('This is *djot*')
+#=> "<p>This is <strong>djot</strong></p>\n"
+
+Djot::JavaScript.parse("- `hello", warn: ->(w) { p w })
+#=>
+# {"tag"=>"doc",
+#  "references"=>{},
+#  "footnotes"=>{},
+#  "children"=>
+#   [{"tag"=>"bullet_list",
+#     "tight"=>true,
+#     "style"=>"-",
+#     "children"=>[{"tag"=>"list_item", "children"=>[{"tag"=>"para", "children"=>[{"tag"=>"str", "text"=>"hello"}]}]}]}]}
+#
+# stdout:
+# {"message"=>"Unclosed verbatim", "offset"=>7}
 ```
 
 ## Development
@@ -39,7 +55,6 @@ and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
 ### TODO
 
-* Use [Attach global Ruby functions to your JavaScript context](https://github.com/rubyjs/mini_racer#attach-global-ruby-functions-to-your-javascript-context) for the functions' options which accepts lambda expressions.
 * Create document class (and more) for idiomatic control in Ruby.
 * Write parser in pure Ruby.
 * Make JavaScript version as default. Currently the default is Lua version.
