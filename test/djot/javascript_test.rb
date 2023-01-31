@@ -234,6 +234,8 @@ module Djot
                                                   "pandoc-api-version" => [1, 22, 2, 1] }))
     end
 
+    # TODO: from Pandoc with warn
+
     test "version" do
       assert_equal("0.2.1", Djot::JavaScript.version)
     end

@@ -115,9 +115,16 @@ module Djot
     # Correspond to +djot.fromPandoc+
     # (https://github.com/jgm/djot.js#pandoc-interoperability)
     #
-    # TODO: support options
-    def self.from_pandoc(pandoc)
-      call("fromPandoc", pandoc)
+    # CAUTION: +warn+ options hasn't yet tested.
+    #
+    # TODO: support source_positions option?
+    def self.from_pandoc(pandoc, warn: nil)
+      context.eval("args = #{JSON.generate([pandoc, {}])}")
+      if warn
+        context.attach("warn", warn)
+        context.eval('args[1]["warn"] = warn')
+      end
+      context.eval("djot.fromPandoc.apply(this, args)")
     end
 
     # TODO: support filters

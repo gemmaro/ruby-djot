@@ -12,6 +12,8 @@
   (Option `overrides` are not yet supported.)
 * Option `warn` and `smart_punctuation_map` for `Djot::JavaScript.to_pandoc`.
   (Please caution that `warn` options has not yet tested.)
+* Option `warn` for `Djot::JavaScript.from_pandoc`.
+  (Please caution that `warn` options has not yet tested.)
 
 ### Changed
 
