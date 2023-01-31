@@ -116,8 +116,6 @@ module Djot
     # (https://github.com/jgm/djot.js#pandoc-interoperability)
     #
     # CAUTION: +warn+ options hasn't yet tested.
-    #
-    # TODO: support source_positions option?
     def self.from_pandoc(pandoc, warn: nil)
       context.eval("args = #{JSON.generate([pandoc, {}])}")
       if warn
