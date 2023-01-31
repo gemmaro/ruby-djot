@@ -17,6 +17,8 @@
 
 * JavaScript runtime has changed from ExecJS to MiniRacer, for passing Ruby proc to JavaScript runtime.
   See also [rails/execjs#71 > Custom configuration of runtime](https://github.com/rails/execjs/issues/71).
+* `Djot::JavaScript::VERSION` and `Djot::JavaScript::PATH` is deprecated.
+  Use `Djot::JavaScript.version` and `Djot::JavaScript.path` instead.
 
 ## [0.0.5] - 2023-01-21
 

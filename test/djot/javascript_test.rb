@@ -235,7 +235,7 @@ module Djot
     end
 
     test "version" do
-      assert_equal("0.2.1", Djot::JavaScript::VERSION)
+      assert_equal("0.2.1", Djot::JavaScript.version)
     end
   end
 end

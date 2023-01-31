@@ -11,9 +11,12 @@ module Djot
   module JavaScript
     PATH: Pathname
     VERSION: (Array[untyped] | Hash[untyped, untyped] | MiniRacer::JavaScriptFunction | Time)?
+    self.@path: Pathname
+    self.@version: (Array[untyped] | Hash[untyped, untyped] | MiniRacer::JavaScriptFunction | Time)?
     self.@context: MiniRacer::Context
     self.@source: String
 
+    def self.path: -> Pathname
     def self.source: -> String
     def self.context: -> MiniRacer::Context?
     def self.parse: (untyped input, ?source_positions: nil, ?warn: nil) -> ((Array[untyped] | Hash[untyped, untyped] | MiniRacer::JavaScriptFunction | Time)?)
@@ -23,6 +26,7 @@ module Djot
     def self.render_djot: (untyped doc, ?wrap_width: nil) -> ((Array[untyped] | Hash[untyped, untyped] | MiniRacer::JavaScriptFunction | Time)?)
     def self.to_pandoc: (untyped doc, ?warn: nil, ?smart_punctuation_map: nil) -> ((Array[untyped] | Hash[untyped, untyped] | MiniRacer::JavaScriptFunction | Time)?)
     def self.from_pandoc: (untyped pandoc) -> ((Array[untyped] | Hash[untyped, untyped] | MiniRacer::JavaScriptFunction | Time)?)
+    def self.version: -> ((Array[untyped] | Hash[untyped, untyped] | MiniRacer::JavaScriptFunction | Time)?)
     def self.call: (String name, *Hash[String, untyped] args) -> ((Array[untyped] | Hash[untyped, untyped] | MiniRacer::JavaScriptFunction | Time)?)
   end
 

@@ -4,7 +4,13 @@ require "mini_racer"
 module Djot
   # Functionalities of djot.js
   module JavaScript
-    PATH = Pathname(__dir__ || (raise Error)) / ".." / "js" / "djot.js" # :nodoc:
+    def self.path # :nodoc:
+      @path ||= Pathname(__dir__ || (raise Error)) / ".." / "js" / "djot.js"
+    end
+
+    PATH = path # :nodoc:
+
+    deprecate_constant :PATH
 
     def self.source # :nodoc:
       @source ||= PATH.read
@@ -118,7 +124,13 @@ module Djot
 
     # Correspond to +djot.version+
     # (https://github.com/jgm/djot.js#getting-the-version)
-    VERSION = context.eval("djot.version")
+    def self.version
+      @version ||= context.eval("djot.version")
+    end
+
+    VERSION = version # :nodoc:
+
+    deprecate_constant :VERSION
 
     def self.call(name, *args) # :nodoc:
       context.eval("djot.#{name}.apply(this, #{::JSON.generate(args)})")
