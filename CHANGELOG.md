@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+## [0.0.6] - 2023-01-31
+
+Note again that the default parser might be changed from djot.lua to djot.js in future version.
+
 ### Added
 
 * `Djot::Lua` module, which contains ex-`Djot.render_*` methods.
